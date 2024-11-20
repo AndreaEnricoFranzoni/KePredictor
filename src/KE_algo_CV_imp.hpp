@@ -58,7 +58,7 @@ KE_algo_cv<IMP>::KE_CV_algo()
   
   valid_err.clear(); 
   
-  KE_algo<IMP> ke_best(m_X,m_k,m_number_threads);
+  KE_algo<IMP> ke_best(std::move(m_X),m_k,m_number_threads);
   
   ke_best.KE_algorithm();
   
