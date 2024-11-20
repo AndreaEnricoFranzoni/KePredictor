@@ -15,7 +15,6 @@ KE_algo<IMP>::KE_algorithm()
   
   Eigen::SelfAdjointEigenSolver<KE_Traits::StoringMatrix> eigensolver(m_Cov);
   
-  if (eigensolver.info() != Eigen::Success) abort();  //TODO: THROW EXCEPTION
   
   //eigenvalues (descending order)
   KE_Traits::StoringVector eigvals = eigensolver.eigenvalues().reverse();
