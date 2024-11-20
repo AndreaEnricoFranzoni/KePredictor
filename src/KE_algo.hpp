@@ -47,7 +47,7 @@ public:
     m_k(k),
     m_number_threads(number_threads)
     {  
-      
+      std::cout << "Enter algo single" << std::endl;
       //evaluating row mean and saving it in the m_means
       m_means = (m_X.rowwise().sum())/m_n;
       
