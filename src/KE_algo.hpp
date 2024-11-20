@@ -38,10 +38,10 @@ private:
   
 public:
   
-  template<typename STOR_OBJ>
-  KE_algo(STOR_OBJ&& X,int k,int number_threads)
+
+  KE_algo(const KE_Traits::StoringMatrix& X,int k,int number_threads)
     :   
-    m_X{std::forward<STOR_OBJ>(X)},
+    m_X{X},
     m_m(X.rows()),
     m_n(X.cols()),
     m_k(k),

@@ -48,10 +48,10 @@ private:
   
 public:
   
-  template<typename STOR_OBJ>
-  KE_algo_cv(STOR_OBJ&& X,std::vector<int> k_s,int first_ts,int last_ts,int toll,int number_threads)
+
+  KE_algo_cv(const KE_Traits::StoringMatrix& X,std::vector<int> k_s,int first_ts,int last_ts,int toll,int number_threads)
     :   
-    m_X{std::forward<STOR_OBJ>(X)},
+    m_X{X},
     m_k_s(k_s),
     m_first_train_set_dim(first_ts),
     m_last_train_set_dim(last_ts),

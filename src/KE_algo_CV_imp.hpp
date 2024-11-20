@@ -31,7 +31,7 @@ KE_algo_cv<IMP>::KE_CV_algo()
       KE_Traits::StoringMatrix train_set = m_X.leftCols(m_ti_ts[j]);
       KE_Traits::StoringMatrix valid_set = m_X.col(m_ti_ts[j]);
       
-      KE_algo<IMP> ke(std::move(train_set),k,m_number_threads);
+      KE_algo<IMP> ke(train_set,k,m_number_threads);
       ke.KE_algorithm();
       
       err_k[j] = mse<double>( valid_set.array() - ke.prediction() );
@@ -58,7 +58,7 @@ KE_algo_cv<IMP>::KE_CV_algo()
   
   valid_err.clear(); 
   
-  KE_algo<IMP> ke_best(std::move(m_X),m_k,m_number_threads);
+  KE_algo<IMP> ke_best(m_X,m_k,m_number_threads);
   
   ke_best.KE_algorithm();
   
