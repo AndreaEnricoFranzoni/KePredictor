@@ -81,9 +81,7 @@ public:
 
       m_ti_ts.resize(tot_CV_it_single_k);
       std::iota(m_ti_ts.begin(),m_ti_ts.end(),m_first_train_set_dim);
-      std::cout << "Istanti per fare CV sono: " << std::endl;
-      for(std::size_t i = 0; i < m_ti_ts.size(); ++i){
-        std::cout << m_ti_ts[i]<<std::endl;}
+
       
       m_toll = toll*m_trace_cov;
     }
