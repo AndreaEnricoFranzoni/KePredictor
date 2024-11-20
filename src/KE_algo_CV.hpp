@@ -57,7 +57,7 @@ public:
     m_last_train_set_dim(last_ts),
     m_number_threads(number_threads)
     {  
-      std::cout << "Enter cv" << std::endl;
+    
       int m_n = X.cols();
       //evaluating row mean and saving it in the m_means
       m_means = (m_X.rowwise().sum())/m_n;
@@ -77,10 +77,13 @@ public:
       // trace of covariance
       double m_trace_cov = m_Cov.trace();
       
-      int tot_CV_it_single_k = m_last_train_set_dim - m_first_train_set_dim + 1;
-      
+      int tot_CV_it_single_k = m_last_train_set_dim - m_first_train_set_dim;
+
       m_ti_ts.resize(tot_CV_it_single_k);
       std::iota(m_ti_ts.begin(),m_ti_ts.end(),m_first_train_set_dim);
+      std::cout << "Istanti per fare CV sono: " << std::endl;
+      for(std::size_t i = 0; i < m_ti_ts.size(); ++i){
+        std::cout << m_ti_ts[i]<<std::endl;}
       
       m_toll = toll*m_trace_cov;
     }
