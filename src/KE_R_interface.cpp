@@ -43,7 +43,7 @@ Rcpp::List KE_1d(Rcpp::NumericMatrix           X,
   auto data_read = reader_data<T>(X,id_RN);
   KE_Traits::StoringMatrix x = data_read.first;
   
-  KE_algo_cv<2u> ke_solver(x,k_s,min_dim_train_set,max_dim_train_set,toll, 1);
+  KE_algo_cv<2u> ke_solver(std::move(x),k_s,min_dim_train_set,max_dim_train_set,toll, 1);
   ke_solver.KE_CV_algo();
   
   auto pred = ke_solver.pred();
@@ -89,7 +89,7 @@ Rcpp::List KEI_1d(Rcpp::NumericMatrix           X,
   auto data_read = reader_data<T>(X,id_RN);
   KE_Traits::StoringMatrix x = data_read.first;
   
-  KE_algo_cv<1u> ke_solver(x,k_s,min_dim_train_set,max_dim_train_set,toll, 1);
+  KE_algo_cv<1u> ke_solver(std::move(x),k_s,min_dim_train_set,max_dim_train_set,toll, 1);
   ke_solver.KE_CV_algo();
   
   auto pred = add_nans_vec(ke_solver.pred(),data_read.second,X.nrow());
@@ -143,7 +143,7 @@ Rcpp::List KE_2d(Rcpp::NumericMatrix           X,
   auto data_read = reader_data<T>(X,id_RN);
   KE_Traits::StoringMatrix x = data_read.first;
   
-  KE_algo_cv<2u> ke_solver(x,k_s,min_dim_train_set,max_dim_train_set,toll, 1);
+  KE_algo_cv<2u> ke_solver(std::move(x),k_s,min_dim_train_set,max_dim_train_set,toll, 1);
   ke_solver.KE_CV_algo();
   
   auto one_step_ahead_pred  = from_col_to_matrix(add_nans_vec(ke_solver.pred(),data_read.second,X.nrow()),num_disc_ev_x1,num_disc_ev_x2);  //estimate of the prediction (NaN for the points in which you do not have measurements)
@@ -194,7 +194,7 @@ Rcpp::List KEI_2d(Rcpp::NumericMatrix           X,
   auto data_read = reader_data<T>(X,id_RN);
   KE_Traits::StoringMatrix x = data_read.first;
   
-  KE_algo_cv<1u> ke_solver(x,k_s,min_dim_train_set,max_dim_train_set,toll, 1);
+  KE_algo_cv<1u> ke_solver(std::move(x),k_s,min_dim_train_set,max_dim_train_set,toll, 1);
   ke_solver.KE_CV_algo();
   
   auto one_step_ahead_pred  = from_col_to_matrix(add_nans_vec(ke_solver.pred(),data_read.second,X.nrow()),num_disc_ev_x1,num_disc_ev_x2);  //estimate of the prediction (NaN for the points in which you do not have measurements)
