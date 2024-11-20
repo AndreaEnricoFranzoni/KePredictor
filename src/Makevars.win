@@ -1,0 +1,4 @@
+PKG_CPPFLAGS =  -I../inst/include 
+PKG_LIBS = $(LAPACK_LIBS) $(FLIBS) $(BLAS_LIBS)
+
+CXX_STD = CXX20

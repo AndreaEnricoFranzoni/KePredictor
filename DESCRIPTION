@@ -1,0 +1,13 @@
+Package: KePredictor
+Type: Package
+Title: Kernel Estimation for estimating an autoregressive operator
+Version: 1.0
+Date: 2024-11-20
+Author: Andrea Enrico Franzoni [aut, cre]
+Maintainer: Andrea Enrico Franzoni <andreaenrico.franzoni@gmail.com>
+Description: Kernel Estimation for doing one step ahead prediction of functional time series
+License: What license is it under?
+Imports: Rcpp (>= 1.0.12), ggplot2, grid, gridExtra, viridis, patchwork, latex2exp
+LinkingTo: Rcpp, RcppEigen
+Depends: R (>= 4.0)
+SystemRequirements: C++20, BLAS, LAPACK
