@@ -15,6 +15,10 @@
 #include "KE_algo.hpp"
 #include "cv_eval_valid_err.hpp"
 
+#ifdef _OPENMP
+#include <omp.h>
+#endif
+
 
 
 
