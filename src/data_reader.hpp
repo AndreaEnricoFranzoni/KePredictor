@@ -15,6 +15,10 @@
 #include "removing_nan.hpp"
 #include "parameters_wrapper.hpp"
 
+#ifdef _OPENMP
+#include <omp.h>
+#endif
+
 
 
 
@@ -26,6 +30,11 @@ reader_data(Rcpp::NumericMatrix X,
             REM_NAN MA_t)
 {
   std::cout << "Kernel Estimate predictor with CV for retained number of PCs" << std::endl;
+#ifdef _OPENMP
+            std::cout << "Parallel version" << std::endl;
+#else
+            std::cout << "Serial version" << std::endl;
+#endif
   //taking the dimensions: n_row is the number of time series, n_col is the number of time istants
   int n_row = X.nrow();
   int n_col = X.ncol();
