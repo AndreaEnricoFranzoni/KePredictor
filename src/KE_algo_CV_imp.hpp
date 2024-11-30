@@ -26,9 +26,7 @@ KE_algo_cv<IMP>::KE_CV_algo()
 
 
     
-#ifdef _OPENMP
-#pragma omp parallel for shared(m_X,k,tot_iter,m_ti_ts,m_number_threads,err_k) num_threads(m_number_threads)
-#endif
+
     for(std::size_t j = 0; j < tot_iter; ++j)
     {
       KE_Traits::StoringMatrix train_set = m_X.leftCols(m_ti_ts[j]);
