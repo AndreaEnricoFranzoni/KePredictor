@@ -29,7 +29,6 @@ std::pair<KE_Traits::StoringMatrix,std::vector<int>>
 reader_data(Rcpp::NumericMatrix X,
             REM_NAN MA_t)
 {
-  std::cout << "Kernel Estimate predictor with CV for retained number of PCs" << std::endl;
 
   //taking the dimensions: n_row is the number of time series, n_col is the number of time istants
   int n_row = X.nrow();
