@@ -14,8 +14,7 @@ KE_algo_cv<IMP>::KE_CV_algo()
   
   double previous_error(static_cast<double>(0));
   
-  
-  
+
   for(std::size_t i = 0; i < tot_k; ++i)
   {
     int k = m_k_s[i];
@@ -24,8 +23,12 @@ KE_algo_cv<IMP>::KE_CV_algo()
     err_k.resize(m_ti_ts.size());
     
     int tot_iter = m_ti_ts.size();
-    
 
+
+    
+#ifdef _OPENMP
+#pragma omp parallel for shared(m_X,k,m_number_threads,err_k) num_threads(m_number_threads)
+#endif
     for(std::size_t j = 0; j < tot_iter; ++j)
     {
       KE_Traits::StoringMatrix train_set = m_X.leftCols(m_ti_ts[j]);
@@ -36,7 +39,8 @@ KE_algo_cv<IMP>::KE_CV_algo()
       
       err_k[j] = mse<double>( valid_set.array() - ke.prediction() );
     }
-    
+
+
     double curr_err = std::reduce(err_k.begin(),err_k.end(),0.0,std::plus<double>{});
     
     valid_err.emplace_back(curr_err);
